@@ -1,0 +1,15 @@
+
+.paginator {
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    button {
+        margin: 0 10px;
+        border: 0;
+        background: #fff;
+        outline: 0;
+        cursor: pointer;
+    }
+}

@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { mapDispatchToProps, mapStateToProps } from './reducers/_dispatchers';
+
+import HomesContainer from './components/HomesContainer/HomesContainer';
 
 function App() {
   return (
-    <div className="App">
+    <Router>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        Hola
       </header>
-    </div>
+      <Switch>
+        <Route exact path="/" component={HomesContainer} />
+      </Switch>
+    </Router>
   );
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

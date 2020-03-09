@@ -1,0 +1,65 @@
+
+.frame {
+    background-color: #fff;
+    margin: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 5px #ccc;
+    position: relative;
+
+    .address,
+    .icons {
+        font-size: .85em;
+        padding: 0 10px;
+        margin-top: 8px;
+    }
+
+    .price,
+    .homie-exclusive {
+        position: absolute;
+        z-index: 2;
+    }
+
+    .price {
+        background-color: #fff;
+        padding: 4px;
+        color: red;
+    }
+
+    .homie-exclusive {
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        background-color: rgba(138, 0, 0, 0.6);
+        margin-top: -18px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .address-icons-container {
+        display: flex;
+        height: calc(100% - 155px);
+        flex-wrap: wrap;
+        align-content: space-between;
+        div {
+            width: 100%;
+            flex-basis: 100%;
+        }
+    }
+
+    &.selected {
+        .price {
+            background-color: red;
+            color: #fff;
+        }
+    }
+}
+
+.photo-container {
+    height: 155px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
