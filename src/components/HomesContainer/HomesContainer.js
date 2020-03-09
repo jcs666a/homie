@@ -6,10 +6,9 @@ import { endpoint } from '../../constants/api';
 import { FaFilter } from 'react-icons/fa';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { arrayDivider } from '../../shared/helpers.js';
-import GoogleMapReact from 'google-map-react';
-import Marker from '../../shared/marker/Marker';
 import HomeFrame from '../../shared/homeFrame/HomeFrame';
 import Paginator from '../../shared/paginator/Paginator';
+import Gmap from '../../shared/map/Map';
 
 import './homesContainer.scss';
 
@@ -26,7 +25,13 @@ class HomesContainer extends Component {
             currentPage: 0,
             totalPages: 1,
             totalHomes: 0,
-            itemsPerPage: 8
+            itemsPerPage: 8,
+            defaultZoom: 10,
+            centerCords: {
+                lat: 19.4448952,
+                lng: -99.19529169999998
+            },
+            newCenterCords: null
         }
     }
 
@@ -53,7 +58,13 @@ class HomesContainer extends Component {
         }
     }
 
-    goToPage = (num) => {
+    centerMap = cords => {
+        this.setState({
+            newCenterCords: cords
+        });
+    }
+
+    goToPage = num => {
         this.setState({
             currentPage: num
         });
@@ -66,9 +77,11 @@ class HomesContainer extends Component {
             isLoading,
             totalPages,
             totalHomes,
-            itemsPerPage
+            itemsPerPage,
+            defaultZoom,
+            centerCords,
+            newCenterCords
         } = this.state;
-        // console.log(this.state);
 
         return (
             <div className="container">
@@ -87,7 +100,9 @@ class HomesContainer extends Component {
                                 </div>
                             </div>
                             <div className="parent-homes-container">
-                                { homes[currentPage].map(home => <HomeFrame home={home} key={`home-frame-${home.id}`} />) }
+                                { homes[currentPage].map(home =>
+                                    <HomeFrame home={home} centerMap={this.centerMap} key={`home-frame-${home.id}`} />
+                                )}
                             </div>
                             <Paginator currentPage={currentPage} totalPages={totalPages} totalHomes={totalHomes} itemsPerPage={itemsPerPage} goToPage={this.goToPage} />
                             <div className="extras-footer">
@@ -97,20 +112,13 @@ class HomesContainer extends Component {
                             </div>
                         </div>
                         <div className="rigth-column-container">
-                        <GoogleMapReact
-                            bootstrapURLKeys={{ key: '' }}
-                            defaultCenter={{lat: 19.4448952, lng: -99.19529169999998}}
-                            defaultZoom={10}
-                            >
-                            { homes[currentPage].map(home =>
-                                <Marker
-                                    key={`home-marker-${home.id}`}
-                                    lat={home.location.lat}
-                                    lng={home.location.lng}
-                                    price={home.price}
-                                />
-                            )}
-                        </GoogleMapReact>
+                            <Gmap
+                                centerCords={centerCords}
+                                newCenterCords={newCenterCords}
+                                defaultZoom={defaultZoom}
+                                homes={homes}
+                                currentPage={currentPage}
+                            />
                         </div>
                     </div>
                 )}

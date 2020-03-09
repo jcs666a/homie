@@ -9,11 +9,8 @@ import './homeFrame.scss';
 
 export default class HomeFrame extends Component {
 
-    centerMap = (cords) => {
-        alert('Cordenadas: ' + cords.lat + ' | ' + cords.lng);
-    }
-
     render() {
+        const { centerMap } = this.props;
         const {
             id,
             abbr_address,
@@ -44,7 +41,7 @@ export default class HomeFrame extends Component {
                 </Carousel>
                 {is_homie_exclusive && <div className="homie-exclusive">Exclusivo de Homie</div>}
                 <div className="address-icons-container" onClick={()=> {
-                    this.centerMap(location);
+                    centerMap(location);
                 }}>
                     <div className="address">{abbr_address}</div>
                     <div className="icons">
@@ -61,5 +58,6 @@ export default class HomeFrame extends Component {
 }
 
 HomeFrame.propTypes = {
+    centerMap: PropTypes.func,
     home: PropTypes.object
 };
