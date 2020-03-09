@@ -4,16 +4,55 @@
     align-items: flex-start;
     flex-wrap: wrap;
     background-color: #f2f0f5;
+    margin: 44px -15px 0;
+    padding: 0 15px;
 }
 
 .rigth-column-container {
-    width: 45%;
-    flex-basis: 45%;
+    width: calc(50% - 20px);
+    flex-basis: calc(50% - 20px);
+    height: 650px;
+    padding: 20px 0 0 20px;
 }
 
 .left-column-container {
-    width: 55%;
-    flex-basis: 55%;
+    width: 50%;
+    flex-basis: 50%;
+}
+
+.filters {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .city {
+        width: calc(100% - 155px);
+        background-color: white;
+        padding: 10px;
+
+        span {
+            display: block;
+            &:first-child {
+                color: #7676ef;
+                font-weight: 700;
+            }
+            &:last-child {
+                font-size: .9em;
+            }
+        }
+    }
+
+    .filters-btn {
+        background-color: #7676ef;
+        color: #fff;
+        padding: 18px 25px;
+        border-radius: 5px;
+        cursor: pointer;
+        svg {
+            margin-right: 8px;
+        }
+    }
 }
 
 .paginator {
@@ -21,9 +60,26 @@
     flex-basis: 100%;
 }
 
+.extras-footer {
+    text-align: center;
+    margin-bottom: 30px;
+    h4 {
+        font-weight: 700;
+    }
+    button {
+        background-color: #cc6f6f;
+        color: white;
+        font-weight: 600;
+        padding: 10px 50px;
+        border: 0;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
+
 .loader {
     display: block;
-    margin: 50px auto;
+    margin: 150px auto;
     width: 100px;
     height: 100px;
 }

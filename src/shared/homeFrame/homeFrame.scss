@@ -5,8 +5,16 @@
     padding-bottom: 5px;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 0 0 5px #ccc;
     position: relative;
+
+    * {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
 
     .address,
     .icons {
@@ -43,9 +51,25 @@
         height: calc(100% - 155px);
         flex-wrap: wrap;
         align-content: space-between;
+        color: #555;
+        cursor: pointer;
         div {
             width: 100%;
             flex-basis: 100%;
+        }
+    }
+
+    .icons {
+        display: flex;
+        justify-content: space-between;
+        margin: 15px 0 8px;
+        span {
+            flex-basis: calc(20% - 4px);
+            border-right: 1px solid #555;
+            text-align: center;
+            &:last-child {
+                border-right: 0;
+            }
         }
     }
 

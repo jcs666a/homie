@@ -153,6 +153,15 @@ template {
   display: none;
 }
 
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 15px;
+}
+.block-shadow {
+  box-shadow: 0 0 5px #ccc;
+}
+
 .icon-spin {
   -webkit-animation: icon-spin .5s infinite linear;
           animation: icon-spin .5s infinite linear;

@@ -8,6 +8,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './homeFrame.scss';
 
 export default class HomeFrame extends Component {
+
+    centerMap = (cords) => {
+        alert('Cordenadas: ' + cords.lat + ' | ' + cords.lng);
+    }
+
     render() {
         const {
             id,
@@ -16,7 +21,7 @@ export default class HomeFrame extends Component {
             bedrooms,
             parkings,
             sqare_mts,
-            // location,
+            location,
             // name,
             pet_friendly,
             photos,
@@ -25,7 +30,7 @@ export default class HomeFrame extends Component {
         } = this.props.home;
 
         return (
-            <div className="frame">
+            <div className="frame block-shadow">
                 <div className="price">${priceFormater(price)} <FiHeart /></div>
                 <Carousel showStatus={false} showIndicators={false} showThumbs={false}>
                     { photos.map((photo, index) => {
@@ -38,7 +43,9 @@ export default class HomeFrame extends Component {
                     }) }
                 </Carousel>
                 {is_homie_exclusive && <div className="homie-exclusive">Exclusivo de Homie</div>}
-                <div className="address-icons-container">
+                <div className="address-icons-container" onClick={()=> {
+                    this.centerMap(location);
+                }}>
                     <div className="address">{abbr_address}</div>
                     <div className="icons">
                         <span>{bedrooms} <FaBed /></span>
