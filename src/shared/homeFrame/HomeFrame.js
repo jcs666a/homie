@@ -27,7 +27,7 @@ export default class HomeFrame extends Component {
         } = this.props.home;
 
         return (
-            <div className="frame block-shadow">
+            <div className="frame block-shadow" id={`apartment-id-${id}`}>
                 <div className="price">${priceFormater(price)} <FiHeart /></div>
                 <Carousel showStatus={false} showIndicators={false} showThumbs={false}>
                     { photos.map((photo, index) => {

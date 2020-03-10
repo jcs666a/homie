@@ -5,8 +5,14 @@ import './marker.scss';
 export default class Marker extends Component {
 
     render() {
+        const {
+            onClickFn
+        } = this.props;
+
         return (
-            <div className='marker'>
+            <div className='marker' onClick={() => {
+                onClickFn(this.props.id);
+            }}>
                 {this.props.price}
             </div>
         );
@@ -14,5 +20,9 @@ export default class Marker extends Component {
 }
 
 Marker.propTypes = {
-    price: PropTypes.number
+    id: PropTypes.string,
+    lat: PropTypes.number,
+    lng: PropTypes.number,
+    price: PropTypes.number,
+    onClickFn: PropTypes.func
 };

@@ -38,6 +38,11 @@ class Gmap extends Component {
         });
     }
 
+    onClick = (id) => {
+        const ref = document.getElementById('apartment-id-' + id);
+        window.scrollTo(0, ref.offsetTop - 55);
+    }
+
     render() {
         const {
             homes,
@@ -58,9 +63,11 @@ class Gmap extends Component {
                 { homes[currentPage].map(home =>
                     <Marker
                         key={`home-marker-${home.id}`}
+                        id={home.id}
                         lat={home.location.lat}
                         lng={home.location.lng}
                         price={home.price}
+                        onClickFn={this.onClick}
                     />
                 )}
             </GoogleMapReact>
